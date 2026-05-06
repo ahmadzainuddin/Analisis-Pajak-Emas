@@ -666,7 +666,7 @@ const chartOptions = {
           <tbody>
             <tr v-for="row in investmentComparison.rows" :key="row.investment">
               <td>
-                <span :class="{ 'highlight-investment': row.key }">{{ row.investment }}</span>
+                <span class="highlight-investment">{{ row.investment }}</span>
               </td>
               <td>{{ formatCurrency(row.initial) }}</td>
               <td>{{ formatCurrency(row.final) }}</td>
