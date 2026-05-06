@@ -433,6 +433,54 @@ const chartData = computed(() => ({
   ],
 }))
 
+const restructureChartData = computed(() => ({
+  labels: simulation.value.rows.map((row) => formatDate(row.date)),
+  datasets: [
+    {
+      label: 'Harga beli emas/g',
+      data: simulation.value.rows.map((row) => row.buyingPricePerGram),
+      borderColor: '#64748b',
+      backgroundColor: 'rgba(100, 116, 139, 0.08)',
+      tension: 0.35,
+    },
+    {
+      label: 'Nilai emas',
+      data: simulation.value.rows.map((row) => row.goldValue),
+      borderColor: '#0f766e',
+      backgroundColor: 'rgba(15, 118, 110, 0.1)',
+      tension: 0.35,
+    },
+    {
+      label: 'Baki pajakan',
+      data: simulation.value.rows.map((row) => row.pawnBalance),
+      borderColor: '#1d4ed8',
+      backgroundColor: 'rgba(29, 78, 216, 0.08)',
+      tension: 0.35,
+    },
+    {
+      label: 'Hasil restructure',
+      data: simulation.value.rows.map((row) => row.restructureProceeds),
+      borderColor: '#0891b2',
+      backgroundColor: 'rgba(8, 145, 178, 0.08)',
+      tension: 0.35,
+    },
+    {
+      label: `Upah ${restructureMonths.value} bulan`,
+      data: simulation.value.rows.map((row) => row.storageFee),
+      borderColor: '#b45309',
+      backgroundColor: 'rgba(180, 83, 9, 0.08)',
+      tension: 0.35,
+    },
+    {
+      label: 'Lebihan bersih',
+      data: simulation.value.rows.map((row) => row.netSurplus),
+      borderColor: '#7c3aed',
+      backgroundColor: 'rgba(124, 58, 237, 0.08)',
+      tension: 0.35,
+    },
+  ],
+}))
+
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -611,6 +659,9 @@ const chartOptions = {
           <p class="section-label">Jadual 2</p>
           <h2>Detailed Restructure Table</h2>
         </div>
+      </div>
+      <div class="chart-wrap restructure-chart-wrap">
+        <Line :data="restructureChartData" :options="chartOptions" />
       </div>
       <div class="table-wrap">
         <table>
