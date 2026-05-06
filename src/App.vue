@@ -66,6 +66,13 @@ const formatFullDate = (date) => fullDateFormatter.format(new Date(date))
 const formatYear = (date) => new Date(date).getFullYear()
 const formatPercent = (value) => `${formatNumber(value)}%`
 
+const scrollToRestructureTable = () => {
+  document.getElementById('detailed-restructure-table')?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
 const monthStartDate = (monthValue) => new Date(`${monthValue || firstMonth}-01T00:00:00`)
 
 const monthEndDate = (monthValue) => {
@@ -542,7 +549,7 @@ const chartOptions = {
       </div>
     </section>
 
-    <section class="panel">
+    <section id="detailed-restructure-table" class="panel">
       <div class="panel-heading">
         <div>
           <p class="section-label">Jadual 2</p>
@@ -681,7 +688,14 @@ const chartOptions = {
                 >
                   View details
                 </button>
-                <span v-else class="muted-cell">-</span>
+                <button
+                  v-else
+                  type="button"
+                  class="details-button"
+                  @click="scrollToRestructureTable"
+                >
+                  View details
+                </button>
               </td>
             </tr>
           </tbody>
