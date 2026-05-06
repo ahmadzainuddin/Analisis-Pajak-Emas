@@ -211,7 +211,6 @@ Current structure:
 ├── package.json
 ├── package-lock.json
 ├── vite.config.js
-├── kijang-emas-prices.csv
 └── src
     ├── App.vue
     ├── main.js

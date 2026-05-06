@@ -10,7 +10,6 @@ This document explains the current repository layout and a suggested structure f
 ├── package.json
 ├── package-lock.json
 ├── vite.config.js
-├── kijang-emas-prices.csv
 └── src
     ├── App.vue
     ├── main.js
@@ -27,7 +26,6 @@ This document explains the current repository layout and a suggested structure f
 | `package.json` | Project metadata, scripts, and dependencies. |
 | `package-lock.json` | Locked npm dependency versions for reproducible installs. |
 | `vite.config.js` | Vite configuration with Vue plugin registration. |
-| `kijang-emas-prices.csv` | Source CSV dataset for Kijang Emas prices. |
 | `src/main.js` | Vue application bootstrap file. |
 | `src/App.vue` | Main dashboard UI, financial calculations, chart setup, and styling. |
 | `src/data/asb-dividends.json` | Local ASB dividend and bonus dataset. |
