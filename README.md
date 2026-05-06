@@ -69,6 +69,14 @@ Additional portfolio views:
 | FD compounding table | `docs/screenshots/fd-compounding-table.png` |
 | Kijang Emas price data table | `docs/screenshots/price-data-table.png` |
 
+## PDF Report
+
+A printable dashboard capture is available for portfolio review:
+
+[Download Analisis Pajak Emas PDF](docs/pdf/Analisis%20Pajak%20Emas.pdf)
+
+This PDF contains a snapshot of the deployed web dashboard and can be used as a quick project preview for recruiters, portfolio submissions, and offline review.
+
 ## How It Works
 
 The dashboard loads historical Kijang Emas prices and ASB dividend records from local JSON files. Users can adjust the gold weight, pawn margin, monthly storage fee, restructure interval, FD rate, and simulation date range.

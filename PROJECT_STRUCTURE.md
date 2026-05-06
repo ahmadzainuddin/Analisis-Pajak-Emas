@@ -10,6 +10,14 @@ This document explains the current repository layout and a suggested structure f
 ├── package.json
 ├── package-lock.json
 ├── vite.config.js
+├── docs
+│   ├── pdf
+│   │   └── Analisis Pajak Emas.pdf
+│   └── screenshots
+│       ├── dashboard-overview.png
+│       ├── chart-section.png
+│       ├── restructure-table.png
+│       └── mobile-view.png
 └── src
     ├── App.vue
     ├── main.js
@@ -26,6 +34,8 @@ This document explains the current repository layout and a suggested structure f
 | `package.json` | Project metadata, scripts, and dependencies. |
 | `package-lock.json` | Locked npm dependency versions for reproducible installs. |
 | `vite.config.js` | Vite configuration with Vue plugin registration. |
+| `docs/pdf/Analisis Pajak Emas.pdf` | Printable dashboard capture for portfolio and offline review. |
+| `docs/screenshots/` | Dashboard screenshots used by the README and project showcase. |
 | `src/main.js` | Vue application bootstrap file. |
 | `src/App.vue` | Main dashboard UI, financial calculations, chart setup, and styling. |
 | `src/data/asb-dividends.json` | Local ASB dividend and bonus dataset. |
@@ -65,7 +75,10 @@ The current structure is suitable for a compact single-page dashboard. As the pr
 │   ├── App.vue
 │   └── main.js
 ├── docs
-│   └── formulas.md
+│   ├── formulas.md
+│   ├── pdf
+│   │   └── Analisis Pajak Emas.pdf
+│   └── screenshots
 ├── README.md
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
@@ -87,7 +100,9 @@ The current structure is suitable for a compact single-page dashboard. As the pr
 | `src/utils/finance.js` | Financial formulas such as gold valuation, pawn proceeds, storage fee, restructure surplus, and compounding. |
 | `src/utils/formatters.js` | Currency, number, date, and percentage formatting helpers. |
 | `src/utils/dates.js` | Date range, month interval, and price lookup helpers. |
-| `docs/` | Additional technical notes, formula references, and screenshot assets. |
+| `docs/` | Additional technical notes, formula references, PDF reports, and screenshot assets. |
+| `docs/pdf/` | Printable dashboard captures and report-style exports. |
+| `docs/screenshots/` | Static visual assets used by README and portfolio documentation. |
 
 ## Refactor Recommendation
 
