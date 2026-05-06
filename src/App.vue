@@ -660,30 +660,29 @@ const chartOptions = {
               <th>Nilai {{ formatYear(selectedRange.endPrice.date) }}</th>
               <th>Total Profit RM</th>
               <th>Anggaran Return</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="row in investmentComparison.rows"
-              :key="row.investment"
-              :class="{ 'clickable-row': row.key }"
-              @click="row.key && (selectedInvestment = row.key)"
-            >
+            <tr v-for="row in investmentComparison.rows" :key="row.investment">
               <td>
-                <button
-                  v-if="row.key"
-                  type="button"
-                  class="link-button"
-                  @click.stop="selectedInvestment = row.key"
-                >
-                  {{ row.investment }}
-                </button>
-                <span v-else>{{ row.investment }}</span>
+                <span :class="{ 'highlight-investment': row.key }">{{ row.investment }}</span>
               </td>
               <td>{{ formatCurrency(row.initial) }}</td>
               <td>{{ formatCurrency(row.final) }}</td>
               <td>{{ formatCurrency(row.totalProfit) }}</td>
               <td>{{ formatPercent(row.returnPercent) }}</td>
+              <td>
+                <button
+                  v-if="row.key"
+                  type="button"
+                  class="details-button"
+                  @click="selectedInvestment = row.key"
+                >
+                  View details
+                </button>
+                <span v-else class="muted-cell">-</span>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -948,19 +947,6 @@ label {
   background: #e2e8f0;
 }
 
-.link-button {
-  border: 0;
-  padding: 0;
-  color: #0f766e;
-  background: transparent;
-  font-weight: 800;
-  text-align: left;
-}
-
-.link-button:hover {
-  text-decoration: underline;
-}
-
 input {
   width: 100%;
   min-height: 44px;
@@ -1079,14 +1065,6 @@ tfoot td {
   font-weight: 800;
 }
 
-.clickable-row {
-  cursor: pointer;
-}
-
-.clickable-row:hover td {
-  background: #f8fafc;
-}
-
 .positive {
   color: #047857;
   font-weight: 700;
@@ -1146,6 +1124,31 @@ tfoot td {
   top: 0;
   z-index: 1;
   background: #ffffff;
+}
+
+.highlight-investment {
+  color: #0f766e;
+  font-weight: 800;
+}
+
+.details-button {
+  min-height: 36px;
+  border: 1px solid #0f766e;
+  border-radius: 8px;
+  padding: 0 12px;
+  color: #0f766e;
+  background: #ffffff;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.details-button:hover {
+  color: #ffffff;
+  background: #0f766e;
+}
+
+.muted-cell {
+  color: #94a3b8;
 }
 
 .author-panel {
