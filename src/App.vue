@@ -1,5 +1,6 @@
 <script setup>
 import {
+  BarElement,
   CategoryScale,
   Chart as ChartJS,
   Filler,
@@ -10,11 +11,11 @@ import {
   Tooltip,
 } from 'chart.js'
 import { computed, ref } from 'vue'
-import { Line } from 'vue-chartjs'
+import { Bar, Line } from 'vue-chartjs'
 import asbDividends from './data/asb-dividends.json'
 import prices from './data/kijang-emas-prices.json'
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler, Tooltip, Legend)
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Filler, Tooltip, Legend)
 
 const OUNCE_TO_GRAM = 31.1035
 
@@ -341,6 +342,61 @@ const selectedInvestmentDetails = computed(() => {
     totalProfitPercent: ((detail.final / detail.initial) - 1) * 100,
   }
 })
+
+const investmentComparisonChartData = computed(() => ({
+  labels: investmentComparison.value.rows.map((row) => row.investment),
+  datasets: [
+    {
+      label: `Nilai ${formatYear(selectedRange.value.endPrice.date)}`,
+      data: investmentComparison.value.rows.map((row) => row.final),
+      backgroundColor: 'rgba(15, 118, 110, 0.82)',
+      borderColor: '#0f766e',
+      borderWidth: 1,
+      borderRadius: 6,
+    },
+    {
+      label: 'Total profit',
+      data: investmentComparison.value.rows.map((row) => row.totalProfit),
+      backgroundColor: 'rgba(29, 78, 216, 0.78)',
+      borderColor: '#1d4ed8',
+      borderWidth: 1,
+      borderRadius: 6,
+    },
+  ],
+}))
+
+const investmentComparisonChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        boxWidth: 10,
+        boxHeight: 10,
+        usePointStyle: true,
+      },
+    },
+    tooltip: {
+      callbacks: {
+        label: (context) => `${context.dataset.label}: ${formatCurrency(context.parsed.y)}`,
+      },
+    },
+  },
+  scales: {
+    x: {
+      ticks: {
+        maxRotation: 0,
+        minRotation: 0,
+      },
+    },
+    y: {
+      ticks: {
+        callback: (value) => formatCurrency(value),
+      },
+    },
+  },
+}
 
 const chartData = computed(() => ({
   labels: simulation.value.rows.map((row) => formatDate(row.date)),
@@ -700,6 +756,18 @@ const chartOptions = {
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="panel comparison-chart-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="section-label">Graf Perbandingan</p>
+          <h2>Perbezaan nilai akhir dan profit</h2>
+        </div>
+      </div>
+      <div class="chart-wrap comparison-chart-wrap">
+        <Bar :data="investmentComparisonChartData" :options="investmentComparisonChartOptions" />
       </div>
     </section>
 
