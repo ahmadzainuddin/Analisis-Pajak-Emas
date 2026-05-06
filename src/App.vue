@@ -1163,6 +1163,12 @@ input:focus {
   height: 420px;
 }
 
+.restructure-chart-wrap {
+  margin-bottom: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e6ebf1;
+}
+
 .table-wrap {
   overflow-x: auto;
 }
