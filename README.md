@@ -75,6 +75,18 @@ The dashboard loads historical Kijang Emas prices and ASB dividend records from 
 
 For each selected period, the app estimates the gold value, pawn balance, restructure proceeds, storage fee, net surplus, redemption cost, and total cashflow. The output is then compared with ASB and FD compounding to show whether the simulated pajak emas strategy performs better or worse than alternative savings instruments.
 
+## Methodology
+
+The simulation uses historical Bank Negara Malaysia Kijang Emas buying prices from January 2020 to May 2026.
+
+A conservative Ar-Rahnu strategy is simulated using:
+
+- 70% pawn margin
+- 0.75% monthly storage fee
+- 6-month restructure interval
+
+Cashflow, redemption cost, restructure surplus, and investment comparison are calculated using historical gold appreciation and compounding assumptions.
+
 ## Financial Logic
 
 The calculation logic is intentionally transparent and conservative. It uses the Kijang Emas buying price as the basis for pawn value, restructure value, and resale value.
