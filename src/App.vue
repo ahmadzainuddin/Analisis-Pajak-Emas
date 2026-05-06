@@ -67,6 +67,13 @@ const formatFullDate = (date) => fullDateFormatter.format(new Date(date))
 const formatYear = (date) => new Date(date).getFullYear()
 const formatPercent = (value) => `${formatNumber(value)}%`
 
+const validateEndMonth = () => {
+  if (endMonth.value && endMonth.value > latestMonth) {
+    alert(`Data harga emas hanya tersedia setakat ${formatDate(monthEndDate(latestMonth))}.`)
+    endMonth.value = latestMonth
+  }
+}
+
 const scrollToRestructureTable = () => {
   document.getElementById('detailed-restructure-table')?.scrollIntoView({
     behavior: 'smooth',
@@ -561,7 +568,13 @@ const chartOptions = {
       </label>
       <label>
         <span>Tarikh tamat</span>
-        <input v-model="endMonth" type="month" :min="firstMonth" :max="latestMonth" />
+        <input
+          v-model="endMonth"
+          type="month"
+          :min="firstMonth"
+          :max="latestMonth"
+          @change="validateEndMonth"
+        />
       </label>
       <div class="control-action">
         <button type="button" class="primary-button" @click="isPriceModalOpen = true">
