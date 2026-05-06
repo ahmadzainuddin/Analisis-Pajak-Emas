@@ -26,6 +26,7 @@ const restructureMonths = ref(6)
 const fdAnnualPercent = ref(3.5)
 const isPriceModalOpen = ref(false)
 const selectedInvestment = ref(null)
+const dateWarningTitle = ref('')
 const dateWarningMessage = ref('')
 
 const sortedPrices = [...prices].sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -68,10 +69,73 @@ const formatFullDate = (date) => fullDateFormatter.format(new Date(date))
 const formatYear = (date) => new Date(date).getFullYear()
 const formatPercent = (value) => `${formatNumber(value)}%`
 
+const showDateWarning = (title, message) => {
+  dateWarningTitle.value = title
+  dateWarningMessage.value = message
+}
+
+const closeDateWarning = () => {
+  dateWarningTitle.value = ''
+  dateWarningMessage.value = ''
+}
+
+const validateStartMonth = () => {
+  if (!startMonth.value) return
+
+  if (startMonth.value < firstMonth) {
+    showDateWarning(
+      'Tarikh mula di luar rekod',
+      `Data harga emas hanya bermula dari ${formatDate(monthStartDate(firstMonth))}.`,
+    )
+    startMonth.value = firstMonth
+    return
+  }
+
+  if (startMonth.value > latestMonth) {
+    showDateWarning(
+      'Tarikh mula melebihi rekod',
+      `Data harga emas hanya tersedia setakat ${formatDate(monthEndDate(latestMonth))}.`,
+    )
+    startMonth.value = latestMonth
+    return
+  }
+
+  if (startMonth.value > endMonth.value) {
+    showDateWarning(
+      'Julat tarikh tidak sah',
+      'Tarikh mula tidak boleh melebihi tarikh tamat.',
+    )
+    startMonth.value = endMonth.value
+  }
+}
+
 const validateEndMonth = () => {
-  if (endMonth.value && endMonth.value > latestMonth) {
-    dateWarningMessage.value = `Data harga emas hanya tersedia setakat ${formatDate(monthEndDate(latestMonth))}.`
+  if (!endMonth.value) return
+
+  if (endMonth.value < firstMonth) {
+    showDateWarning(
+      'Tarikh tamat di luar rekod',
+      `Data harga emas hanya bermula dari ${formatDate(monthStartDate(firstMonth))}.`,
+    )
+    endMonth.value = firstMonth
+    return
+  }
+
+  if (endMonth.value > latestMonth) {
+    showDateWarning(
+      'Tarikh tamat melebihi rekod',
+      `Data harga emas hanya tersedia setakat ${formatDate(monthEndDate(latestMonth))}.`,
+    )
     endMonth.value = latestMonth
+    return
+  }
+
+  if (endMonth.value < startMonth.value) {
+    showDateWarning(
+      'Julat tarikh tidak sah',
+      'Tarikh tamat tidak boleh kurang daripada tarikh mula.',
+    )
+    endMonth.value = startMonth.value
   }
 }
 
@@ -565,7 +629,13 @@ const chartOptions = {
       </label>
       <label>
         <span>Tarikh mula</span>
-        <input v-model="startMonth" type="month" :min="firstMonth" :max="latestMonth" />
+        <input
+          v-model="startMonth"
+          type="month"
+          :min="firstMonth"
+          :max="latestMonth"
+          @change="validateStartMonth"
+        />
       </label>
       <label>
         <span>Tarikh tamat</span>
@@ -723,7 +793,7 @@ const chartOptions = {
     <div
       v-if="dateWarningMessage"
       class="modal-backdrop"
-      @click.self="dateWarningMessage = ''"
+      @click.self="closeDateWarning"
     >
       <section
         class="notice-modal"
@@ -734,10 +804,10 @@ const chartOptions = {
       >
         <div>
           <p class="section-label">Data tidak tersedia</p>
-          <h2 id="date-warning-title">Julat tarikh melebihi rekod</h2>
+          <h2 id="date-warning-title">{{ dateWarningTitle }}</h2>
           <p id="date-warning-message">{{ dateWarningMessage }}</p>
         </div>
-        <button type="button" class="primary-button" @click="dateWarningMessage = ''">
+        <button type="button" class="primary-button" @click="closeDateWarning">
           OK
         </button>
       </section>
