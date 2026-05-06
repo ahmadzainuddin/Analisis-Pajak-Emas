@@ -1,0 +1,15 @@
+[
+  { "year": 2013, "dividend": 7.70, "bonus": 1.00, "total": 8.70 },
+  { "year": 2014, "dividend": 7.50, "bonus": 1.00, "total": 8.50 },
+  { "year": 2015, "dividend": 7.25, "bonus": 0.50, "total": 7.75 },
+  { "year": 2016, "dividend": 6.75, "bonus": 0.50, "total": 7.25 },
+  { "year": 2017, "dividend": 7.00, "bonus": 1.25, "total": 8.25 },
+  { "year": 2018, "dividend": 6.50, "bonus": 0.50, "total": 7.00 },
+  { "year": 2019, "dividend": 5.00, "bonus": 0.50, "total": 5.50 },
+  { "year": 2020, "dividend": 3.50, "bonus": 0.75, "total": 4.25 },
+  { "year": 2021, "dividend": 4.25, "bonus": 0.75, "total": 5.00 },
+  { "year": 2022, "dividend": 3.35, "bonus": 1.25, "total": 4.60 },
+  { "year": 2023, "dividend": 4.25, "bonus": 1.00, "total": 5.25 },
+  { "year": 2024, "dividend": 5.50, "bonus": 0.25, "total": 5.75 },
+  { "year": 2025, "dividend": 5.20, "bonus": 0.55, "total": 5.75 }
+]
