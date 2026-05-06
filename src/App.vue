@@ -26,6 +26,7 @@ const restructureMonths = ref(6)
 const fdAnnualPercent = ref(3.5)
 const isPriceModalOpen = ref(false)
 const selectedInvestment = ref(null)
+const dateWarningMessage = ref('')
 
 const sortedPrices = [...prices].sort((a, b) => new Date(a.date) - new Date(b.date))
 const sortedAsbDividends = [...asbDividends].sort((a, b) => a.year - b.year)
@@ -69,7 +70,7 @@ const formatPercent = (value) => `${formatNumber(value)}%`
 
 const validateEndMonth = () => {
   if (endMonth.value && endMonth.value > latestMonth) {
-    alert(`Data harga emas hanya tersedia setakat ${formatDate(monthEndDate(latestMonth))}.`)
+    dateWarningMessage.value = `Data harga emas hanya tersedia setakat ${formatDate(monthEndDate(latestMonth))}.`
     endMonth.value = latestMonth
   }
 }
@@ -719,6 +720,29 @@ const chartOptions = {
       </div>
     </section>
 
+    <div
+      v-if="dateWarningMessage"
+      class="modal-backdrop"
+      @click.self="dateWarningMessage = ''"
+    >
+      <section
+        class="notice-modal"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="date-warning-title"
+        aria-describedby="date-warning-message"
+      >
+        <div>
+          <p class="section-label">Data tidak tersedia</p>
+          <h2 id="date-warning-title">Julat tarikh melebihi rekod</h2>
+          <p id="date-warning-message">{{ dateWarningMessage }}</p>
+        </div>
+        <button type="button" class="primary-button" @click="dateWarningMessage = ''">
+          OK
+        </button>
+      </section>
+    </div>
+
     <div v-if="isPriceModalOpen" class="modal-backdrop" @click.self="isPriceModalOpen = false">
       <section class="price-modal" role="dialog" aria-modal="true" aria-labelledby="price-modal-title">
         <div class="modal-heading">
@@ -1247,6 +1271,32 @@ tfoot td {
   background: #ffffff;
   box-shadow: 0 24px 70px rgba(15, 23, 42, 0.26);
   overflow: hidden;
+}
+
+.notice-modal {
+  width: min(520px, 100%);
+  display: grid;
+  gap: 20px;
+  border: 1px solid #dfe5ec;
+  border-radius: 8px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.26);
+}
+
+.notice-modal h2 {
+  font-size: 1.2rem;
+}
+
+.notice-modal p:not(.section-label) {
+  margin: 10px 0 0;
+  color: #526174;
+  line-height: 1.6;
+}
+
+.notice-modal .primary-button {
+  justify-self: end;
+  min-width: 96px;
 }
 
 .modal-heading {
