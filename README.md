@@ -286,15 +286,18 @@ BSc (Hons) Information Technology candidate at Malaysia University of Science an
 
 This project demonstrates historical gold price analysis, Ar-Rahnu simulation, cashflow modeling, and investment comparison using Vue.js and real Malaysian financial datasets.
 
+Areas of interest:
+Financial analytics, cloud computing, fintech systems, data visualization, and AI-assisted applications.
+
 Relevant coursework:
 
 - Data Science
-- Software Engineering
-- Data Structures & Algorithms
-- Object-Oriented Analysis & Design
-- System Analysis and Design
 - Business Analytics & Artificial Intelligence
 - Applied Statistics
+- Object-Oriented Analysis & Design
+- System Analysis and Design
+- Software Engineering
+- Data Structures & Algorithms
 
 - GitHub: [@ahmadzainuddin](https://github.com/ahmadzainuddin)
 - Project: [Analisis Pajak Emas](https://github.com/ahmadzainuddin/Analisis-Pajak-Emas)
