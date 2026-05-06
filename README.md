@@ -281,7 +281,7 @@ Always verify assumptions with the relevant financial institution and consult a 
 
 **Developed by Ahmad Zainuddin**
 
-BSc (Hons) Information Technology candidate at Malaysia University of Science and Technology (MUST), with academic focus in data science, software engineering, cloud computing, and financial analytics.
+BSc (Hons) Information Technology candidate at Malaysia University of Science and Technology (MUST), with interests in data science, cloud computing, fintech systems, and financial analytics.
 
 This project demonstrates historical gold price analysis, Ar-Rahnu simulation, cashflow modeling, and investment comparison using Vue.js and real Malaysian financial datasets.
 
