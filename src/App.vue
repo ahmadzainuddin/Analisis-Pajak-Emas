@@ -755,6 +755,35 @@ const chartOptions = {
         </div>
       </section>
     </div>
+
+    <section class="author-panel" aria-labelledby="author-title">
+      <div>
+        <p class="section-label">Author</p>
+        <h2 id="author-title">Ahmad Zainuddin</h2>
+        <p>
+          Financial dashboard, data analytics project, and Malaysian fintech simulation
+          built with Vue.js and historical BNM Kijang Emas data.
+        </p>
+      </div>
+      <div class="author-links" aria-label="Author and project links">
+        <a href="https://github.com/ahmadzainuddin" target="_blank" rel="noopener noreferrer">
+          <span>GitHub</span>
+          <strong>@ahmadzainuddin</strong>
+        </a>
+        <a
+          href="https://github.com/ahmadzainuddin/Analisis-Pajak-Emas"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Project</span>
+          <strong>Analisis Pajak Emas</strong>
+        </a>
+        <a href="https://analisis-pajak-emas.pages.dev/" target="_blank" rel="noopener noreferrer">
+          <span>Live Demo</span>
+          <strong>analisis-pajak-emas.pages.dev</strong>
+        </a>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -1119,9 +1148,70 @@ tfoot td {
   background: #ffffff;
 }
 
+.author-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 18px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid #dfe5ec;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(23, 32, 51, 0.06);
+}
+
+.author-panel p:not(.section-label) {
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: #526174;
+  line-height: 1.6;
+}
+
+.author-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.author-links a {
+  display: grid;
+  gap: 8px;
+  min-height: 92px;
+  align-content: center;
+  border: 1px solid #dfe5ec;
+  border-radius: 8px;
+  padding: 14px;
+  color: #172033;
+  background: #f8fafc;
+  text-decoration: none;
+}
+
+.author-links a:hover {
+  border-color: #0f766e;
+  background: #f0fdfa;
+}
+
+.author-links span {
+  color: #607086;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.author-links strong {
+  color: #0f766e;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 1180px) {
   .controls-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .author-panel {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1157,6 +1247,10 @@ tfoot td {
 
   .modal-heading {
     padding: 18px;
+  }
+
+  .author-links {
+    grid-template-columns: 1fr;
   }
 }
 </style>
