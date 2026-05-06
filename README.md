@@ -33,6 +33,13 @@ The project is designed as a recruiter-friendly fintech and data analytics portf
 - Responsive Vue dashboard suitable for desktop and mobile review.
 - Local JSON data model for fast static deployment.
 
+## Key Insights
+
+- Historical gold appreciation from 2020-2026 outperformed ASB and Fixed Deposit simulations.
+- Rolling restructure strategy generated positive net surplus during strong gold market periods.
+- Gold price appreciation successfully offset storage fees in the simulation.
+- The dashboard demonstrates leveraged cashflow behavior using Ar-Rahnu concepts.
+
 ## Screenshots
 
 <p align="center">
