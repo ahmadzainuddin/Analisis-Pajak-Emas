@@ -280,7 +280,21 @@ Always verify assumptions with the relevant financial institution and consult a 
 
 ## Author
 
-**Ahmad Zainuddin**
+**Developed by Ahmad Zainuddin**
+
+BSc (Hons) Information Technology candidate at Malaysia University of Science and Technology (MUST), with academic focus in data science, software engineering, cloud computing, and financial analytics.
+
+This project demonstrates historical gold price analysis, Ar-Rahnu simulation, cashflow modeling, and investment comparison using Vue.js and real Malaysian financial datasets.
+
+Relevant coursework:
+
+- Data Science
+- Software Engineering
+- Data Structures & Algorithms
+- Object-Oriented Analysis & Design
+- System Analysis and Design
+- Business Analytics & Artificial Intelligence
+- Applied Statistics
 
 - GitHub: [@ahmadzainuddin](https://github.com/ahmadzainuddin)
 - Project: [Analisis Pajak Emas](https://github.com/ahmadzainuddin/Analisis-Pajak-Emas)
