@@ -319,6 +319,7 @@ Relevant coursework:
 - Data Structures & Algorithms
 
 - GitHub: [@ahmadzainuddin](https://github.com/ahmadzainuddin)
+- Email: [zainuddin@codemaster.my](mailto:zainuddin@codemaster.my)
 - Project: [Analisis Pajak Emas](https://github.com/ahmadzainuddin/Analisis-Pajak-Emas)
 - Live Demo: [analisis-pajak-emas.pages.dev](https://analisis-pajak-emas.pages.dev/)
 
